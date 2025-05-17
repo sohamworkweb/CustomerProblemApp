@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/edtCustomerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Customer Name"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edtProductName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Product Name"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edtProblem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Problem"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edtPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone Number"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/edtQueryPerson"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Query Person"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edtEngineerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Engineer Name"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edtStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Status"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Problem" />
+
+</LinearLayout>
