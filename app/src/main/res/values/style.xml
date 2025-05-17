@@ -1,0 +1,7 @@
+<resources>
+    <style name="CustomEditTextStyle">
+        <item name="android:textColor">#FF000000</item>         <!-- Black text -->
+        <item name="android:textColorHint">#80000000</item>     <!-- Dark gray hint -->
+        <item name="android:background">#FFFFFFFF</item>        <!-- White background -->
+    </style>
+</resources>
