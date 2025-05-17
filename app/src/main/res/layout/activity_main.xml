@@ -16,7 +16,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="8dp"/>
 
-
     <!-- Add the FloatingActionButton for navigation -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddProblem"

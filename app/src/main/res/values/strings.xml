@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">CustomerProblemApp</string>
+    <string name="save_problem">Save Problem</string>
+    <string name="status">Status</string>
+    <string name="engineer_name">Engineer Name</string>
+    <string name="query_person">Query Person</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="problem">Problem</string>
+    <string name="product_name">Product Name</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="add_customer_problem">Add Customer Problem</string>
+    <string name="add">Add Customer Problem</string>
+
 </resources>

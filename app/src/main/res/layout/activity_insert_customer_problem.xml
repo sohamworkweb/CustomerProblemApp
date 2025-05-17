@@ -1,63 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/edtCustomerName"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Customer Name"
-        android:inputType="text" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <EditText
-        android:id="@+id/edtProductName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Product Name"
-        android:inputType="text" />
+        <EditText
+            android:id="@+id/edtCustomerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:importantForAutofill="no"
+            android:minHeight="48dp"
+            android:hint="@string/customer_name"
+            android:inputType="text"
+            android:padding="10dp"
+            android:layout_marginBottom="12dp" />
 
-    <EditText
-        android:id="@+id/edtProblem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Problem"
-        android:inputType="text" />
+        <EditText
+            android:id="@+id/edtProductName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:importantForAutofill="no"
+            android:minHeight="48dp"
+            android:hint="@string/product_name"
+            android:inputType="text"
+            android:padding="10dp"
+            android:layout_marginBottom="12dp" />
 
-    <EditText
-        android:id="@+id/edtPhoneNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Phone Number"
-        android:inputType="phone" />
+        <EditText
+            android:id="@+id/edtProblem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:importantForAutofill="no"
+            android:minHeight="48dp"
+            android:hint="@string/problem"
+            android:inputType="text"
+            android:padding="10dp"
+            android:layout_marginBottom="12dp" />
 
-    <EditText
-        android:id="@+id/edtQueryPerson"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Query Person"
-        android:inputType="text" />
+        <EditText
+            android:id="@+id/edtPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:hint="@string/phone_number"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            android:padding="10dp"
+            android:layout_marginBottom="12dp" />
 
-    <EditText
-        android:id="@+id/edtEngineerName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Engineer Name"
-        android:inputType="text" />
+        <EditText
+            android:id="@+id/edtQueryPerson"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:importantForAutofill="no"
+            android:minHeight="48dp"
+            android:hint="@string/query_person"
+            android:inputType="text"
+            android:padding="10dp"
+            android:layout_marginBottom="12dp" />
 
-    <EditText
-        android:id="@+id/edtStatus"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Status"
-        android:inputType="text" />
+        <EditText
+            android:id="@+id/edtEngineerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:importantForAutofill="no"
+            android:minHeight="48dp"
+            android:hint="@string/engineer_name"
+            android:inputType="text"
+            android:padding="10dp"
+            android:layout_marginBottom="12dp" />
 
-    <Button
-        android:id="@+id/btnSave"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save Problem" />
+        <EditText
+            android:id="@+id/edtStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:hint="@string/status"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/save_problem"
+            android:backgroundTint="@color/purple_500"
+            android:textColor="@android:color/white"
+            android:padding="12dp" />
+
+    </LinearLayout>
+</ScrollView>

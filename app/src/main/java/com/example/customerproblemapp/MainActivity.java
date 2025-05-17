@@ -1,16 +1,19 @@
 package com.example.customerproblemapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import androidx.appcompat.widget.SearchView; // ✅ Correct version
 import android.widget.Toast;
-import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+
+
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -19,21 +22,24 @@ import java.util.List;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
-
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private CustomerProblemAdapter adapter;
+    private SearchView searchView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView); // <-- initialize this!
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        searchView = findViewById(R.id.search_view);
 
         FloatingActionButton fab = findViewById(R.id.fabAddProblem);
         fab.setOnClickListener(v -> {
@@ -41,10 +47,28 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        fetchCustomerProblems(); // Load data initially
+        setupSwipeToDelete();
+        fetchCustomerProblems();
 
-        // ✅ Swipe-to-delete (both sides) with confirmation
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (adapter != null) {
+                    adapter.getFilter().filter(newText);
+                }
+                return true;
+            }
+        });
+    }
+
+    private void setupSwipeToDelete() {
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView,
                                   @NonNull RecyclerView.ViewHolder viewHolder,
@@ -73,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         });
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
-    // ✅ Moved outside onCreate() properly
+
     private void fetchCustomerProblems() {
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<List<CustomerProblem>> call = apiInterface.getCustomerProblems();
@@ -105,7 +129,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
     private void deleteProblemFromServer(int id, int position) {
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<ResponseBody> call = apiInterface.deleteCustomerProblem(id);
@@ -133,6 +156,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        fetchCustomerProblems(); // Refresh data on return
+        fetchCustomerProblems(); // Refresh on return
     }
 }
