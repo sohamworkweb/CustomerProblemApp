@@ -72,7 +72,6 @@ public class CustomerProblemAdapter extends RecyclerView.Adapter<CustomerProblem
         customerProblems.remove(position);
         notifyItemRemoved(position);
     }
-
     @Override
     public Filter getFilter() {
         return customerProblemFilter;
@@ -89,9 +88,15 @@ public class CustomerProblemAdapter extends RecyclerView.Adapter<CustomerProblem
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
                 for (CustomerProblem item : customerProblemsFull) {
-                    if (item.getCustomerName().toLowerCase().contains(filterPattern) ||
-                            item.getProductName().toLowerCase().contains(filterPattern) ||
-                            item.getProblem().toLowerCase().contains(filterPattern)) {
+                    if ((item.getCustomerName() != null && item.getCustomerName().toLowerCase().contains(filterPattern)) ||
+                            (item.getProductName() != null && item.getProductName().toLowerCase().contains(filterPattern)) ||
+                            (item.getProblem() != null && item.getProblem().toLowerCase().contains(filterPattern)) ||
+                            (item.getPhoneNumber() != null && item.getPhoneNumber().toLowerCase().contains(filterPattern)) ||
+                            (item.getQueryPerson() != null && item.getQueryPerson().toLowerCase().contains(filterPattern)) ||
+                            (item.getEngineerName() != null && item.getEngineerName().toLowerCase().contains(filterPattern)) ||
+                            (item.getDateCreated() != null && item.getDateCreated().toLowerCase().contains(filterPattern)) ||
+                            (item.getStatus() != null && item.getStatus().toLowerCase().contains(filterPattern))) {
+
                         filteredList.add(item);
                     }
                 }
@@ -105,10 +110,11 @@ public class CustomerProblemAdapter extends RecyclerView.Adapter<CustomerProblem
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
             customerProblems.clear();
-            customerProblems.addAll((List) results.values);
+            customerProblems.addAll((List<CustomerProblem>) results.values);
             notifyDataSetChanged();
         }
     };
+
 
     public static class CustomerProblemViewHolder extends RecyclerView.ViewHolder {
         TextView customerName, productName, problem, phoneNumber, queryPerson, engineerName, status;
