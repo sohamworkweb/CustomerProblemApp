@@ -1,5 +1,9 @@
 package com.example.customerproblemapp;
 
+import android.graphics.Color;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +23,7 @@ public class CustomerProblemAdapter extends RecyclerView.Adapter<CustomerProblem
     private List<CustomerProblem> customerProblems;
     private List<CustomerProblem> customerProblemsFull; // Backup for filtering
     private final OnCustomerProblemClickListener listener;
+    private String lastSearchQuery = "";
 
     // Define the click listener interface
     public interface OnCustomerProblemClickListener {
@@ -44,13 +49,13 @@ public class CustomerProblemAdapter extends RecyclerView.Adapter<CustomerProblem
     public void onBindViewHolder(@NonNull CustomerProblemViewHolder holder, int position) {
         CustomerProblem customerProblem = customerProblems.get(position);
 
-        holder.customerName.setText(customerProblem.getCustomerName());
-        holder.productName.setText(customerProblem.getProductName());
-        holder.problem.setText(customerProblem.getProblem());
-        holder.phoneNumber.setText(customerProblem.getPhoneNumber());
-        holder.queryPerson.setText(customerProblem.getQueryPerson());
-        holder.engineerName.setText(customerProblem.getEngineerName());
-        holder.status.setText(customerProblem.getStatus());
+        highlightText(holder.customerName, customerProblem.getCustomerName(), lastSearchQuery);
+        highlightText(holder.productName, customerProblem.getProductName(), lastSearchQuery);
+        highlightText(holder.problem, customerProblem.getProblem(), lastSearchQuery);
+        highlightText(holder.phoneNumber, customerProblem.getPhoneNumber(), lastSearchQuery);
+        highlightText(holder.queryPerson, customerProblem.getQueryPerson(), lastSearchQuery);
+        highlightText(holder.engineerName, customerProblem.getEngineerName(), lastSearchQuery);
+        highlightText(holder.status, customerProblem.getStatus(), lastSearchQuery);
 
         // Set item click listener
         holder.itemView.setOnClickListener(v -> {
@@ -59,6 +64,34 @@ public class CustomerProblemAdapter extends RecyclerView.Adapter<CustomerProblem
             }
         });
     }
+    private void highlightText(TextView textView, String originalText, String query) {
+        if (query == null || query.isEmpty() || originalText == null) {
+            textView.setText(originalText);
+            return;
+        }
+
+        String lowerOriginal = originalText.toLowerCase();
+        String lowerQuery = query.toLowerCase();
+
+        int start = lowerOriginal.indexOf(lowerQuery);
+        if (start < 0) {
+            textView.setText(originalText);
+            return;
+        }
+
+        int end = start + query.length();
+
+        SpannableString spannable = new SpannableString(originalText);
+        spannable.setSpan(
+                new ForegroundColorSpan(Color.YELLOW),  // 👈 Highlight color
+                start,
+                end,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        );
+
+        textView.setText(spannable);
+    }
+
 
     @Override
     public int getItemCount() {
@@ -111,6 +144,7 @@ public class CustomerProblemAdapter extends RecyclerView.Adapter<CustomerProblem
         protected void publishResults(CharSequence constraint, FilterResults results) {
             customerProblems.clear();
             customerProblems.addAll((List<CustomerProblem>) results.values);
+            lastSearchQuery = constraint != null ? constraint.toString() : "";
             notifyDataSetChanged();
         }
     };

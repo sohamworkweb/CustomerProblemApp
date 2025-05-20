@@ -40,7 +40,6 @@ public class CustomerProblem implements Serializable {
         this.customerName = customerName;
         this.productName = productName;
         this.problem = problem;
-        this.phoneNumber = phoneNumber;
         this.queryPerson = queryPerson;
         this.engineerName = engineerName;
         this.dateCreated = dateCreated;
