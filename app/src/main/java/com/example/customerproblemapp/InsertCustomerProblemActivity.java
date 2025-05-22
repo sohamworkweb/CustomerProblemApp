@@ -70,6 +70,10 @@ public class InsertCustomerProblemActivity extends AppCompatActivity {
             Toast.makeText(this, "Please fill required fields: Customer Name, Problem, and Status", Toast.LENGTH_SHORT).show();
             return;
         }
+        if (!phoneNumber.matches("\\d{10}")) {
+            Toast.makeText(this, "Phone number must be exactly 10 digits", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         String dateCreated = existingDateCreated != null
                 ? existingDateCreated

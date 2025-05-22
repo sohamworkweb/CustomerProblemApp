@@ -64,7 +64,9 @@
             android:padding="10dp"
             android:hint="@string/phone_number"
             android:inputType="phone"
-            android:importantForAutofill="no" />
+            android:importantForAutofill="no"
+            android:maxLength="10"
+            android:digits="0123456789"/>
 
         <EditText
             android:id="@+id/edtQueryPerson"

@@ -60,9 +60,8 @@ public class CustomerProblem implements Serializable {
         this.status = status;
     }
 
-    // ✅ Getters and setters
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
 
     public String getCustomerName() { return customerName; }
     public void setCustomerName(String customerName) { this.customerName = customerName; }

@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
-
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private CustomerProblemAdapter adapter;
-    private SearchView searchView;
 
 
     @Override
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView); // <-- initialize this!
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        searchView = findViewById(R.id.search_view);
+        SearchView searchView = findViewById(R.id.search_view);
 
         FloatingActionButton fab = findViewById(R.id.fabAddProblem);
         fab.setOnClickListener(v -> {

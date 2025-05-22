@@ -1,5 +1,4 @@
 package com.example.customerproblemapp;
-
 import android.graphics.Color;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -83,7 +82,7 @@ public class CustomerProblemAdapter extends RecyclerView.Adapter<CustomerProblem
 
         SpannableString spannable = new SpannableString(originalText);
         spannable.setSpan(
-                new ForegroundColorSpan(Color.YELLOW),  // 👈 Highlight color
+                new ForegroundColorSpan(Color.RED),
                 start,
                 end,
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
