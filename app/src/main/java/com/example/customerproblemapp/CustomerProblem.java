@@ -5,8 +5,8 @@ import java.io.Serializable;
 
 public class CustomerProblem implements Serializable {
 
-    @SerializedName("Id")
-    private int id;
+   @SerializedName("Id")
+   private Integer id;
 
     @SerializedName("CustomerName")
     private String customerName;
@@ -40,6 +40,7 @@ public class CustomerProblem implements Serializable {
         this.customerName = customerName;
         this.productName = productName;
         this.problem = problem;
+        this.phoneNumber = phoneNumber;
         this.queryPerson = queryPerson;
         this.engineerName = engineerName;
         this.dateCreated = dateCreated;
@@ -59,6 +60,7 @@ public class CustomerProblem implements Serializable {
         this.dateCreated = dateCreated;
         this.status = status;
     }
+
 
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }

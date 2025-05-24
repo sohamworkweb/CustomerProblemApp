@@ -57,7 +57,7 @@ public class InsertCustomerProblemActivity extends AppCompatActivity {
         btnSave.setOnClickListener(v -> saveCustomerProblem());
     }
 
-    private void saveCustomerProblem() {
+   /* private void saveCustomerProblem() {
         String customerName = edtCustomerName.getText().toString().trim();
         String productName = edtProductName.getText().toString().trim();
         String problem = edtProblem.getText().toString().trim();
@@ -144,5 +144,110 @@ public class InsertCustomerProblemActivity extends AppCompatActivity {
                 }
             });
         }
-    }
+    }*/
+   private void saveCustomerProblem() {
+       String customerName = edtCustomerName.getText().toString().trim();
+       String productName = edtProductName.getText().toString().trim();
+       String problem = edtProblem.getText().toString().trim();
+       String phoneNumber = edtPhoneNumber.getText().toString().trim();
+       String queryPerson = edtQueryPerson.getText().toString().trim();
+       String engineerName = edtEngineerName.getText().toString().trim();
+       String status = edtStatus.getText().toString().trim();
+
+       if (TextUtils.isEmpty(customerName) || TextUtils.isEmpty(problem) || TextUtils.isEmpty(status)) {
+           Toast.makeText(this, "Please fill required fields: Customer Name, Problem, and Status", Toast.LENGTH_SHORT).show();
+           return;
+       }
+
+       if (!phoneNumber.matches("\\d{10}")) {
+           Toast.makeText(this, "Phone number must be exactly 10 digits", Toast.LENGTH_SHORT).show();
+           return;
+       }
+
+       String dateCreated = existingDateCreated != null
+               ? existingDateCreated
+               : new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault()).format(new Date());
+
+       CustomerProblem customerProblem;
+       ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+
+       if (existingId == null) {
+           // ✅ POST - use constructor WITHOUT ID
+           customerProblem = new CustomerProblem(
+                   customerName,
+                   productName,
+                   problem,
+                   phoneNumber,
+                   queryPerson,
+                   engineerName,
+                   dateCreated,
+                   status
+           );
+
+           Call<CustomerProblem> call = apiInterface.createCustomerProblem(customerProblem);
+           call.enqueue(new Callback<CustomerProblem>() {
+               @Override
+               public void onResponse(Call<CustomerProblem> call, Response<CustomerProblem> response) {
+                   if (response.isSuccessful()) {
+                       Toast.makeText(InsertCustomerProblemActivity.this, "✅ Customer problem saved", Toast.LENGTH_SHORT).show();
+                       finish();
+                   } else {
+                       try {
+                           String errorBody = response.errorBody().string();
+                           Log.e("API_ERROR", "POST Error: " + errorBody);
+                       } catch (Exception e) {
+                           Log.e("API_ERROR", "POST Error: Unable to parse error body", e);
+                       }
+                       Toast.makeText(InsertCustomerProblemActivity.this, "❌ Failed to insert. Code: " + response.code(), Toast.LENGTH_SHORT).show();
+                   }
+               }
+
+               @Override
+               public void onFailure(Call<CustomerProblem> call, Throwable t) {
+                   Log.e("API_ERROR", "POST failed", t);
+                   Toast.makeText(InsertCustomerProblemActivity.this, "❌ Failed to insert: " + t.getMessage(), Toast.LENGTH_LONG).show();
+               }
+           });
+
+       } else {
+           // ✅ PUT - use constructor WITH ID
+           customerProblem = new CustomerProblem(
+                   existingId,
+                   customerName,
+                   productName,
+                   problem,
+                   phoneNumber,
+                   queryPerson,
+                   engineerName,
+                   dateCreated,
+                   status
+           );
+
+           Call<ResponseBody> call = apiInterface.updateCustomerProblem(existingId, customerProblem);
+           call.enqueue(new Callback<ResponseBody>() {
+               @Override
+               public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                   if (response.isSuccessful()) {
+                       Toast.makeText(InsertCustomerProblemActivity.this, "✅ Customer problem updated", Toast.LENGTH_SHORT).show();
+                       finish();
+                   } else {
+                       try {
+                           String errorBody = response.errorBody().string();
+                           Log.e("API_ERROR", "PUT Error: " + errorBody);
+                       } catch (Exception e) {
+                           Log.e("API_ERROR", "PUT Error: Unable to parse error body", e);
+                       }
+                       Toast.makeText(InsertCustomerProblemActivity.this, "❌ Failed to update. Code: " + response.code(), Toast.LENGTH_SHORT).show();
+                   }
+               }
+
+               @Override
+               public void onFailure(Call<ResponseBody> call, Throwable t) {
+                   Log.e("API_ERROR", "PUT failed", t);
+                   Toast.makeText(InsertCustomerProblemActivity.this, "❌ Failed to update: " + t.getMessage(), Toast.LENGTH_LONG).show();
+               }
+           });
+       }
+   }
+
 }
