@@ -1,68 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="8dp"
-    tools:context=".MainActivity">
+    android:layout_margin="12dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@android:color/white">
 
         <TextView
             android:id="@+id/customerName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Customer Name"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="8dp"/>
 
         <TextView
             android:id="@+id/productName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Product Name"
-            android:textSize="14sp"/>
+            android:textSize="16sp"
+            android:textColor="@color/darkText"
+
+            android:layout_marginBottom="4dp"/>
 
         <TextView
             android:id="@+id/problem"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Problem"
-            android:textSize="14sp"/>
+            android:text="Problem Description"
+            android:textSize="16sp"
+            android:textColor="@color/darkText"
+
+            android:layout_marginBottom="4dp"/>
 
         <TextView
             android:id="@+id/phoneNumber"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Phone Number"
-            android:textSize="14sp"/>
+            android:textSize="16sp"
+            android:textColor="@color/darkText"
+
+            android:layout_marginBottom="4dp"/>
 
         <TextView
             android:id="@+id/queryPerson"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Query Person"
-            android:textSize="14sp"/>
+            android:textSize="16sp"
+            android:textColor="@color/darkText"
+
+            android:layout_marginBottom="4dp"/>
 
         <TextView
             android:id="@+id/engineerName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Engineer Name"
-            android:textSize="14sp"/>
+            android:textSize="16sp"
+            android:textColor="@color/darkText"
+
+            android:layout_marginBottom="4dp"/>
 
         <TextView
             android:id="@+id/status"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Status"
-            android:textSize="14sp"/>
+            android:textSize="16sp"
+            android:textColor="@color/darkText"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
