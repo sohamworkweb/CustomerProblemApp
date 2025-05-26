@@ -48,13 +48,14 @@ public class CustomerProblemAdapter extends RecyclerView.Adapter<CustomerProblem
     public void onBindViewHolder(@NonNull CustomerProblemViewHolder holder, int position) {
         CustomerProblem customerProblem = customerProblems.get(position);
 
-        highlightText(holder.customerName, customerProblem.getCustomerName(), lastSearchQuery);
-        highlightText(holder.productName, customerProblem.getProductName(), lastSearchQuery);
-        highlightText(holder.problem, customerProblem.getProblem(), lastSearchQuery);
-        highlightText(holder.phoneNumber, customerProblem.getPhoneNumber(), lastSearchQuery);
-        highlightText(holder.queryPerson, customerProblem.getQueryPerson(), lastSearchQuery);
-        highlightText(holder.engineerName, customerProblem.getEngineerName(), lastSearchQuery);
-        highlightText(holder.status, customerProblem.getStatus(), lastSearchQuery);
+//        highlightText(holder.customerName, customerProblem.getCustomerName(), lastSearchQuery);
+        highlightText(holder.customerName, "Customer Name : " + customerProblem.getCustomerName(), lastSearchQuery);
+        highlightText(holder.productName,"Product Name : " + customerProblem.getProductName(), lastSearchQuery);
+        highlightText(holder.problem, "Problem : " + customerProblem.getProblem(), lastSearchQuery);
+        highlightText(holder.phoneNumber,"Phone Number : " + customerProblem.getPhoneNumber(), lastSearchQuery);
+        highlightText(holder.queryPerson, "Query Person : " + customerProblem.getQueryPerson(), lastSearchQuery);
+        highlightText(holder.engineerName, "Engineer Name : " + customerProblem.getEngineerName(), lastSearchQuery);
+        highlightText(holder.status, "Status : " + customerProblem.getStatus(), lastSearchQuery);
 
         // Set item click listener
         holder.itemView.setOnClickListener(v -> {
