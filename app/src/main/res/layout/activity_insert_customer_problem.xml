@@ -11,7 +11,16 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Input Fields -->
+        <!-- Customer Name Label -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name:"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Customer Name Input -->
         <EditText
             android:id="@+id/edtCustomerName"
             android:layout_width="match_parent"
@@ -24,6 +33,16 @@
             android:padding="12dp"
             android:layout_marginBottom="12dp" />
 
+        <!-- Product Name Label -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product Name:"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Product Name Input -->
         <EditText
             android:id="@+id/edtProductName"
             android:layout_width="match_parent"
@@ -36,6 +55,16 @@
             android:padding="12dp"
             android:layout_marginBottom="12dp" />
 
+        <!-- Problem Description Label -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Problem:"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Problem Input -->
         <EditText
             android:id="@+id/edtProblem"
             android:layout_width="match_parent"
@@ -50,6 +79,16 @@
             android:padding="12dp"
             android:layout_marginBottom="12dp" />
 
+        <!-- Phone Number Label -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone Number:"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Phone Number Input -->
         <EditText
             android:id="@+id/edtPhoneNumber"
             android:layout_width="match_parent"
@@ -64,6 +103,16 @@
             android:padding="12dp"
             android:layout_marginBottom="12dp" />
 
+        <!-- Query Person Label -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Query Person:"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Query Person Input -->
         <EditText
             android:id="@+id/edtQueryPerson"
             android:layout_width="match_parent"
@@ -76,6 +125,16 @@
             android:padding="12dp"
             android:layout_marginBottom="12dp" />
 
+        <!-- Engineer Name Label -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Engineer Name:"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Engineer Name Input -->
         <EditText
             android:id="@+id/edtEngineerName"
             android:layout_width="match_parent"
@@ -88,6 +147,16 @@
             android:padding="12dp"
             android:layout_marginBottom="12dp" />
 
+        <!-- Status Label -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status:"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Status Input -->
         <EditText
             android:id="@+id/edtStatus"
             android:layout_width="match_parent"
